@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="topbar">
+            <h1>Employee Management System</h1>
+            <a class="btn primary" href="{{ url_for('new_employee') }}">Add Employee</a>
+        </header>
+
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Salary</th>
+                        <th>Joining Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.department }}</td>
+                        <td>{{ employee.position }}</td>
+                        <td>${{ "%.2f"|format(employee.salary) }}</td>
+                        <td>{{ employee.joining_date }}</td>
+                        <td class="actions">
+                            <a class="btn small" href="{{ url_for('edit_employee', employee_id=employee.id) }}">Edit</a>
+                            <form action="{{ url_for('delete_employee', employee_id=employee.id) }}" method="POST" onsubmit="return confirm('Delete this employee?');">
+                                <button class="btn danger small" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="8" class="empty">No employees found. Add one to get started.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>

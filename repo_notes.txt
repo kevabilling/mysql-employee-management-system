@@ -1,0 +1,59 @@
+# MySQL Employee Management System
+
+This repository contains a Python Flask web app that connects to a MySQL database and lets you manage employee records.
+
+## Repository link
+
+https://github.com/kevabilling/mysql-employee-management-system
+
+## Features
+
+- Add employee
+- View employee list
+- Update employee information
+- Delete employee record
+- MySQL database integration
+
+## Run locally
+
+1. Create MySQL database:
+
+```sql
+CREATE DATABASE employee_db;
+```
+
+2. Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Set environment variables:
+
+```bash
+export MYSQL_HOST=localhost
+export MYSQL_USER=root
+export MYSQL_PASSWORD=your_password
+export MYSQL_DATABASE=employee_db
+```
+
+4. Run the app:
+
+```bash
+python app.py
+```
+
+5. Open the site:
+
+```text
+http://localhost:5000
+```
+
+## Project files
+
+- `app.py`
+- `templates/index.html`
+- `templates/add_employee.html`
+- `templates/edit_employee.html`
+- `static/style.css`
+- `README.md`
